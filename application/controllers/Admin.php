@@ -432,12 +432,19 @@ $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfu
             $mot_de_passe = $this->input->post('password');
             $mot_de_passe_hache = hash('sha256', $mot_de_passe); 
             $data['password']    = $mot_de_passe_hache;
-            $this->db->insert('teacher', $data);
-            $teacher_id = $this->db->insert_id();
-            move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/teacher_image/' . $teacher_id . '.jpg');
-            $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
-            $this->email_model->account_opening_email('teacher', $data['email']); //SEND EMAIL ACCOUNT OPENING EMAIL
-            redirect(base_url() . 'index.php?admin/teacher/', 'refresh');
+            $this->db->where('email', $data['email']);
+            $query = $this->db->get('teacher');
+
+            if ($query->num_rows() > 0) {
+             $this->session->set_flashdata('flash_message' ,'Enseignant existes déja');
+          } else {
+             $this->db->insert('teacher', $data);
+             $teacher_id = $this->db->insert_id();
+             move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/teacher_image/' . $teacher_id . '.jpg');
+             $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
+             $this->email_model->account_opening_email('teacher', $data['email']);
+              }
+             redirect(base_url() . 'index.php?admin/teacher/', 'refresh');
         }
         if ($param1 == 'do_update') {
             $data['name']        = $this->input->post('name');
@@ -447,6 +454,7 @@ $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfu
             $data['phone']       = $this->input->post('phone');
             $data['email']       = $this->input->post('email');
             $data['password']    = hash('sha256',$this->input->post('password'));
+            
             
             $this->db->where('teacher_id', $param2);
             $this->db->update('teacher', $data);
@@ -1259,12 +1267,56 @@ $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfu
         if ($this->session->userdata('admin_login') != 1)
             redirect(base_url(), 'refresh');
 
-        if ($param1 == 'send_new') {
-            $message_thread_code = $this->crud_model->send_new_private_message();
-            $this->session->set_flashdata('flash_message', get_phrase('message_sent!'));
-            redirect(base_url() . 'index.php?admin/message/message_read/' . $message_thread_code, 'refresh');
-        }
-
+            if ($param1 == 'send_new') {
+                $reciever = $this->input->post('reciever');
+        
+                // Si l'envoi est groupé
+                if (strpos($reciever, 'all-') !== false || $reciever == 'all') {
+                    // Définir les destinataires en fonction de l'option sélectionnée
+                    if ($reciever == 'all-Students') {
+                        $recipients = $this->db->get('student')->result_array();
+                    } elseif ($reciever == 'all-teachers') {
+                        $recipients = $this->db->get('teacher')->result_array();
+                    } elseif ($reciever == 'all-parents') {
+                        $recipients = $this->db->get('parent')->result_array();
+                    } elseif ($reciever == 'all') {
+                        // Envoi à tous les utilisateurs (élèves, enseignants, parents)
+                        $recipients = array_merge(
+                            $this->db->get('student')->result_array(),
+                            $this->db->get('teacher')->result_array(),
+                            $this->db->get('parent')->result_array()
+                        );
+                    }
+        
+                    // Boucler sur chaque destinataire et envoyer un message individuel
+                    foreach ($recipients as $recipient) {
+                        // Définir le bon identifiant en fonction du type d'utilisateur (élève, enseignant, parent)
+                        if (isset($recipient['student_id'])) {
+                            $individual_recipient = 'student-' . $recipient['student_id'];
+                        } elseif (isset($recipient['teacher_id'])) {
+                            $individual_recipient = 'teacher-' . $recipient['teacher_id'];
+                        } elseif (isset($recipient['parent_id'])) {
+                            $individual_recipient = 'parent-' . $recipient['parent_id'];
+                        }
+        
+                        // Mettre à jour le champ `reciever` avec le destinataire actuel
+                        $_POST['reciever'] = $individual_recipient;
+                        
+                        // Appeler la méthode existante pour envoyer un message à chaque destinataire
+                        $this->crud_model->send_new_private_message();
+                    }
+        
+                    // Flash message et redirection après l'envoi groupé
+                    $this->session->set_flashdata('flash_message', get_phrase('messages_sent!'));
+                    redirect(base_url() . 'index.php?admin/message/message_home', 'refresh');
+        
+                } else {
+                    // Si ce n'est pas un envoi groupé, envoyer un message individuel
+                    $message_thread_code = $this->crud_model->send_new_private_message();
+                    $this->session->set_flashdata('flash_message', get_phrase('message_sent!'));
+                    redirect(base_url() . 'index.php?admin/message/message_read/' . $message_thread_code, 'refresh');
+                }
+            }
         if ($param1 == 'send_reply') {
             $this->crud_model->send_reply_message($param2);  //$param2 = message_thread_code
             $this->session->set_flashdata('flash_message', get_phrase('message_sent!'));

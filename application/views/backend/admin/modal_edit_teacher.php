@@ -39,7 +39,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo ('Email');?></label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="" name="email" value="<?php echo $row['email'];?>"/>
+                                    <input type="text" class="" name="email" value="<?php echo $row['email'];?>"readonly/>
                                 </div>
                             </div>
                             

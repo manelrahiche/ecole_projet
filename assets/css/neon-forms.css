@@ -5835,7 +5835,7 @@ hr + .mail-env {
 }
 .mail-env .mail-body .mail-info .mail-sender,
 .mail-env .mail-body .mail-info .mail-date {
-  display: table-cell;
+  display:flex;
   width: 50%;
   color: #a6a6a6;
   padding: 20px;

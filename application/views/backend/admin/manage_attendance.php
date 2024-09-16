@@ -104,10 +104,7 @@
                 class="btn btn-info">
                 Mise à jour de la présence
             </a>
-            <a href="#" id="update_attendance_button2" onclick="return pdf_attendance()" 
-                class="btn btn-info">
-                Exporter en PDF
-            </a>
+            
         </div>
 
     </div>

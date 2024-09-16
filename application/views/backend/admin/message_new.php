@@ -49,6 +49,17 @@
 
                 <?php endforeach; ?>
             </optgroup>
+            <optgroup label="<?php echo ('Groupé'); ?>">
+                
+                <option value="all-Students"> <?php echo "Tous les élèves" ?></option>
+                <option value="all-teachers"> <?php echo "Tous les enseignants" ?></option>
+                <option value="all-parents"> <?php echo "Tous les parents" ?></option>
+                <option value="all"> <?php echo "Tous" ?></option>
+
+           
+        </optgroup>
+           
+
         </select>
     </div>
 

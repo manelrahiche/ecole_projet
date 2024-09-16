@@ -52,7 +52,7 @@ foreach ( $edit_data as $row):
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo ('Email');?></label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="email" value="<?php echo $row['email'];?>"/>
+                                    <input type="text" class="form-control" name="email" value="<?php echo $row['email'];?>" readonly/>
                                 </div>
                             </div>
                             <div class="form-group">
