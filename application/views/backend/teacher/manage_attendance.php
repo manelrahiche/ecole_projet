@@ -2,11 +2,11 @@
     <table cellpadding="0" cellspacing="0" border="0" class="table table-bordered table-hover table-striped">
         <thead>
             <tr>
-                <th><?php echo ('Select date');?></th>
-                <th><?php echo ('Select month');?></th>
-                <th><?php echo ('Select year');?></th>
-                <th><?php echo ('Select class');?></th>
-                <th><?php echo ('Select date');?></th>
+                <th><?php echo ('Selectionner la date');?></th>
+                <th><?php echo ('Selectionner le mois');?></th>
+                <th><?php echo ('Selectionner l\'année');?></th>
+                <th><?php echo ('Selectionner la classe');?></th>
+                <th><?php echo ('Selectionner la date');?></th>
            </tr>
        </thead>
         <tbody>
@@ -26,18 +26,18 @@
                         <select name="month" class="form-control">
                             <?php 
                             for($i=1;$i<=12;$i++):
-                                if($i==1)$m='January';
-                                else if($i==2)$m='February';
-                                else if($i==3)$m='March';
-                                else if($i==4)$m='April';
-                                else if($i==5)$m='May';
-                                else if($i==6)$m='June';
-                                else if($i==7)$m='July';
-                                else if($i==8)$m='August';
-                                else if($i==9)$m='September';
-                                else if($i==10)$m='October';
-                                else if($i==11)$m='November';
-                                else if($i==12)$m='December';
+                                if($i==1)$m='Janvier';
+                                else if($i==2)$m='Février';
+                                else if($i==3)$m='Mars';
+                                else if($i==4)$m='Avril';
+                                else if($i==5)$m='Mai';
+                                else if($i==6)$m='Juin';
+                                else if($i==7)$m='Juillet';
+                                else if($i==8)$m='Août';
+                                else if($i==9)$m='Septembre';
+                                else if($i==10)$m='Octobre';
+                                else if($i==11)$m='Novembre';
+                                else if($i==12)$m='Decembre';
                             ?>
                                 <option value="<?php echo $i;?>"
                                     <?php if($month==$i)echo 'selected="selected"';?>>
@@ -60,7 +60,7 @@
                     </td>
                     <td>
                         <select name="class_id" class="form-control">
-                            <option value="">Select a class</option>
+                            <option value="">Selectionner une classe</option>
                             <?php 
                             $classes    =   $this->db->get('class')->result_array();
                             foreach($classes as $row):?>
@@ -72,7 +72,7 @@
                         </select>
 
                     </td>
-                    <td align="center"><input type="submit" value="<?php echo ('Manage Attendance');?>" class="btn btn-info"/></td>
+                    <td align="center"><input type="submit" value="<?php echo ('Gérer la présence');?>" class="btn btn-info"/></td>
                 </tr>
             </form>
         </tbody>
@@ -96,12 +96,12 @@
                  ?>
                 <h2><?php echo ucwords($day);?></h2>
                 
-                <h3>Attendance of class <?php echo ($class_id);?></h3>
+                <h3>Présence en classe<?php echo ($class_id);?></h3>
                 <p><?php echo $date.'-'.$month.'-'.$year;?></p>
             </div>
             <a href="#" id="update_attendance_button" onclick="return update_attendance()" 
                 class="btn btn-info">
-                    Update Attendance
+                Mise à jour de la présence
             </a>
         </div>
 
@@ -114,9 +114,9 @@
         <table class="table table-bordered table-hover table-striped">
             <thead>
                 <tr>
-                    <td><?php echo ('Roll');?></td>
-                    <td><?php echo ('Name');?></td>
-                    <td><?php echo ('Status');?></td>
+                    <td><?php echo ('Rang');?></td>
+                    <td><?php echo ('Nom et prénom');?></td>
+                    <td><?php echo ('Statut');?></td>
                 </tr>
             </thead>
             <tbody>
@@ -141,7 +141,7 @@
                             ?>
                         <?php if ($status == 1):?>
                             <td align="center">
-                              <span class="badge badge-success"><?php echo ('Present');?></span>  
+                              <span class="badge badge-success"><?php echo ('Présent');?></span>  
                             </td>
                         <?php endif;?>
                         <?php if ($status == 2):?>
@@ -171,9 +171,9 @@
             <table  class="table table-bordered table-hover table-striped">
                 <thead>
                     <tr class="gradeA">
-                        <th><?php echo ('Roll');?></th>
-                        <th><?php echo ('Name');?></th>
-                        <th><?php echo ('Status');?></th>
+                        <th><?php echo ('Rang');?></th>
+                        <th><?php echo ('Nom et prénom');?></th>
+                        <th><?php echo ('Statut');?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -205,7 +205,7 @@
                                 
                                     <select name="status_<?php echo $row['student_id'];?>" class="form-control" style="width:100px; float:left;">
                                         <option value="0" <?php if($status == 0)echo 'selected="selected"';?>></option>
-                                        <option value="1" <?php if($status == 1)echo 'selected="selected"';?>>Present</option>
+                                        <option value="1" <?php if($status == 1)echo 'selected="selected"';?>>Présent</option>
                                         <option value="2" <?php if($status == 2)echo 'selected="selected"';?>>Absent</option>
                                     </select>
                                 

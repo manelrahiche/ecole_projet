@@ -5,7 +5,7 @@
 		<ul class="nav nav-tabs bordered">
 			<li class="active">
             	<a href="#list" data-toggle="tab"><i class="entypo-menu"></i> 
-					<?php echo ('Noticeboard List');?>
+					<?php echo ('Liste des panneaux d\'affichage');?>
                     	</a></li>
 		</ul>
     	<!------CONTROL TABS END------->
@@ -18,8 +18,8 @@
                 	<thead>
                 		<tr>
                     		<th><div>#</div></th>
-                    		<th><div><?php echo ('Title');?></div></th>
-                    		<th><div><?php echo ('Notice');?></div></th>
+                    		<th><div><?php echo ('Titre');?></div></th>
+                    		<th><div><?php echo ('Evénement');?></div></th>
                     		<th><div><?php echo ('Date');?></div></th>
 						</tr>
 					</thead>

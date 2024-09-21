@@ -1,17 +1,11 @@
 
-<a href="javascript:;" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/student_add/');" 
-    class="btn btn-primary pull-right">
-        <i class="entypo-plus-circled"></i>
-        <?php echo ('Add New Student');?>
-    </a> 
-<br><br>
 <table class="table table-bordered table-hover table-striped datatable" id="table_export">
     <thead>
         <tr>
-            <th width="80"><div><?php echo ('Roll');?></div></th>
+            <th width="80"><div><?php echo ('Rang');?></div></th>
             <th width="80"><div><?php echo ('Photo');?></div></th>
-            <th><div><?php echo ('Name');?></div></th>
-            <th class="span3"><div><?php echo ('Address');?></div></th>
+            <th><div><?php echo ('Nom et prénom');?></div></th>
+            <th class="span3"><div><?php echo ('Adresse');?></div></th>
             <th><div><?php echo ('Email');?></div></th>
             <th><div><?php echo ('Options');?></div></th>
         </tr>
@@ -38,26 +32,12 @@
                         <li>
                             <a href="#" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_student_profile/<?php echo $row['student_id'];?>');">
                                 <i class="entypo-user"></i>
-                                    <?php echo ('Profile');?>
+                                    <?php echo ('Profil');?>
                                 </a>
                                         </li>
                         
                         <!-- STUDENT EDITING LINK -->
-                        <li>
-                            <a href="#" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_student_edit/<?php echo $row['student_id'];?>');">
-                                <i class="entypo-pencil"></i>
-                                    <?php echo ('Edit');?>
-                                </a>
-                                        </li>
-                        <li class="divider"></li>
-                        
-                        <!-- STUDENT DELETION LINK -->
-                        <li>
-                            <a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?teacher/student/<?php echo $class_id;?>/delete/<?php echo $row['student_id'];?>');">
-                                <i class="entypo-trash"></i>
-                                    <?php echo ('Delete');?>
-                                </a>
-                                        </li>
+                       
                     </ul>
                 </div>
                 
@@ -82,14 +62,6 @@
 			"oTableTools": {
 				"aButtons": [
 					
-					{
-						"sExtends": "xls",
-						"mColumns": [0, 2, 3, 4]
-					},
-					{
-						"sExtends": "pdf",
-						"mColumns": [0, 2, 3, 4]
-					},
 					{
 						"sExtends": "print",
 						"fnSetText"	   : "Press 'esc' to return",

@@ -34,7 +34,7 @@
         <li class="<?php if ($page_name == 'dashboard') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/dashboard">
                 <i class="entypo-gauge"></i>
-                <span><?php echo ('Dashboard'); ?></span>
+                <span><?php echo ('Tableau de bord'); ?></span>
             </a>
         </li>
 
@@ -44,7 +44,7 @@
         <li class="<?php if ($page_name == 'teacher') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/teacher_list">
                 <i class="entypo-users"></i>
-                <span><?php echo ('Teacher'); ?></span>
+                <span><?php echo ('Enseignant'); ?></span>
             </a>
         </li>
 
@@ -54,7 +54,7 @@
         <li class="<?php if ($page_name == 'subject') echo ' active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/subject">
                 <i class="entypo-docs"></i>
-                <span><?php echo ('Subject'); ?></span>
+                <span><?php echo ('Matiére scolaire'); ?></span>
             </a>
         </li>
 
@@ -62,7 +62,7 @@
         <li class="<?php if ($page_name == 'class_routine') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/class_routine">
                 <i class="entypo-target"></i>
-                <span><?php echo ('Class Routine'); ?></span>
+                <span><?php echo ('Emploi du temps'); ?></span>
             </a>
         </li>
         
@@ -70,7 +70,7 @@
         <li class="<?php if ($page_name == 'study_material') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/study_material">
                 <i class="entypo-book-open"></i>
-                <span><?php echo ('Study Material'); ?></span>
+                <span><?php echo ('Matériel d\'étude'); ?></span>
             </a>
         </li>
 
@@ -83,7 +83,7 @@
         ?> ">
             <a href="#">
                 <i class="entypo-graduation-cap"></i>
-                <span><?php echo ('Exam'); ?></span>
+                <span><?php echo ('Notes'); ?></span>
             </a>
             <ul>
 
@@ -99,7 +99,7 @@
         <li class="<?php if ($page_name == 'invoice') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/invoice">
                 <i class="entypo-credit-card"></i>
-                <span><?php echo ('Payment'); ?></span>
+                <span><?php echo ('Paiement'); ?></span>
             </a>
         </li>
 
@@ -108,23 +108,18 @@
         <li class="<?php if ($page_name == 'book') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/book">
                 <i class="entypo-book"></i>
-                <span><?php echo ('Library'); ?></span>
+                <span><?php echo ('Bibliothèque'); ?></span>
             </a>
         </li>
 
-        <!-- TRANSPORT -->
-        <li class="<?php if ($page_name == 'transport') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/transport">
-                <i class="entypo-location"></i>
-                <span><?php echo ('Transport'); ?></span>
-            </a>
-        </li>
+       
+      
 
         <!-- NOTICEBOARD -->
         <li class="<?php if ($page_name == 'noticeboard') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/noticeboard">
                 <i class="entypo-doc-text-inv"></i>
-                <span><?php echo ('Noticeboard'); ?></span>
+                <span><?php echo ('Tableau d\'affichage'); ?></span>
             </a>
         </li>
 
@@ -140,7 +135,7 @@
         <li class="<?php if ($page_name == 'manage_profile') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/manage_profile">
                 <i class="entypo-lock"></i>
-                <span><?php echo ('Account'); ?></span>
+                <span><?php echo ('Profil'); ?></span>
             </a>
         </li>
 

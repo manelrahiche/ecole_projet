@@ -5,12 +5,9 @@
 		<ul class="nav nav-tabs bordered">
 			<li class="active">
             	<a href="#list" data-toggle="tab"><i class="entypo-menu"></i> 
-					<?php echo ('Subject List');?>
+					<?php echo ('Liste des matiéres scolaires');?>
                     	</a></li>
-			<li>
-            	<a href="#add" data-toggle="tab"><i class="entypo-plus-circled"></i>
-					<?php echo ('Add Subject');?>
-                    	</a></li>
+			
 		</ul>
     	<!------CONTROL TABS END------>
 		<div class="tab-content">            
@@ -20,10 +17,10 @@
                 <table class="table table-bordered table-hover table-striped datatable" id="table_export">
                 	<thead>
                 		<tr>
-                    		<th><div><?php echo ('Class');?></div></th>
-                    		<th><div><?php echo ('Subject Name');?></div></th>
-                    		<th><div><?php echo ('Teacher');?></div></th>
-                    		<th><div><?php echo ('Options');?></div></th>
+                    		<th><div><?php echo ('Classe');?></div></th>
+                    		<th><div><?php echo ('Module');?></div></th>
+                    		<th><div><?php echo ('Enseignant');?></div></th>
+                    	
 						</tr>
 					</thead>
                     <tbody>
@@ -32,32 +29,7 @@
 							<td><?php echo $this->crud_model->get_type_name_by_id('class',$row['class_id']);?></td>
 							<td><?php echo $row['name'];?></td>
 							<td><?php echo $this->crud_model->get_type_name_by_id('teacher',$row['teacher_id']);?></td>
-							<td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown">
-                                    Action <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-default pull-right" role="menu">
-                                    
-                                    <!-- EDITING LINK -->
-                                    <li>
-                                        <a href="#" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_edit_subject/<?php echo $row['subject_id'];?>');">
-                                            <i class="entypo-pencil"></i>
-                                                <?php echo ('Edit');?>
-                                            </a>
-                                                    </li>
-                                    <li class="divider"></li>
-                                    
-                                    <!-- DELETION LINK -->
-                                    <li>
-                                        <a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?teacher/subject/delete/<?php echo $row['subject_id'];?>/<?php echo $class_id;?>');">
-                                            <i class="entypo-trash"></i>
-                                                <?php echo ('Delete');?>
-                                            </a>
-                                                    </li>
-                                </ul>
-                            </div>
-        					</td>
+							
                         </tr>
                         <?php endforeach;?>
                     </tbody>

@@ -40,7 +40,7 @@ class Parents extends CI_Controller
         if ($this->session->userdata('parent_login') != 1)
             redirect(base_url(), 'refresh');
         $page_data['page_name']  = 'dashboard';
-        $page_data['page_title'] = get_phrase('parent_dashboard');
+        $page_data['page_title'] = get_phrase('Tableau de bord');
         $this->load->view('backend/index', $page_data);
     }
     
@@ -56,7 +56,7 @@ class Parents extends CI_Controller
         }
         $page_data['teachers']   = $this->db->get('teacher')->result_array();
         $page_data['page_name']  = 'teacher';
-        $page_data['page_title'] = get_phrase('manage_teacher');
+        $page_data['page_title'] = get_phrase('Enseigants');
         $this->load->view('backend/index', $page_data);
     }
     
@@ -92,7 +92,7 @@ class Parents extends CI_Controller
             redirect(base_url(), 'refresh');
         $page_data['student_id'] = $param1;
         $page_data['page_name']  = 'marks';
-        $page_data['page_title'] = get_phrase('manage_marks');
+        $page_data['page_title'] = get_phrase('Notes');
         $this->load->view('backend/index', $page_data);
     }
     
@@ -105,7 +105,7 @@ class Parents extends CI_Controller
         
         $page_data['student_id'] = $param1;
         $page_data['page_name']  = 'class_routine';
-        $page_data['page_title'] = get_phrase('manage_class_routine');
+        $page_data['page_title'] = get_phrase('Emploi du temps');
         $this->load->view('backend/index', $page_data);
     }
     
@@ -175,7 +175,7 @@ class Parents extends CI_Controller
         ))->row();
         $page_data['student_id'] = $student_id;
         $page_data['page_name']  = 'invoice';
-        $page_data['page_title'] = get_phrase('manage_invoice/payment');
+        $page_data['page_title'] = get_phrase('Paiement');
         $this->load->view('backend/index', $page_data);
     }
     
@@ -187,7 +187,7 @@ class Parents extends CI_Controller
         
         $page_data['books']      = $this->db->get('book')->result_array();
         $page_data['page_name']  = 'book';
-        $page_data['page_title'] = get_phrase('manage_library_books');
+        $page_data['page_title'] = get_phrase('Bibliothèque');
         $this->load->view('backend/index', $page_data);
         
     }
@@ -224,7 +224,7 @@ class Parents extends CI_Controller
         
         $page_data['notices']    = $this->db->get('noticeboard')->result_array();
         $page_data['page_name']  = 'noticeboard';
-        $page_data['page_title'] = get_phrase('noticeboard');
+        $page_data['page_title'] = get_phrase('Tableau d\'affichage');
         $this->load->view('backend/index', $page_data);
         
     }
@@ -236,7 +236,7 @@ class Parents extends CI_Controller
             redirect('login', 'refresh');
         
         $page_data['page_name']  = 'manage_document';
-        $page_data['page_title'] = get_phrase('manage_documents');
+        $page_data['page_title'] = get_phrase('Documents');
         $page_data['documents']  = $this->db->get('document')->result_array();
         $this->load->view('backend/index', $page_data);
     }
@@ -249,13 +249,13 @@ class Parents extends CI_Controller
 
         if ($param1 == 'send_new') {
             $message_thread_code = $this->crud_model->send_new_private_message();
-            $this->session->set_flashdata('flash_message', get_phrase('message_sent!'));
+            $this->session->set_flashdata('flash_message', get_phrase('message envoyé!'));
             redirect(base_url() . 'index.php?parents/message/message_read/' . $message_thread_code, 'refresh');
         }
 
         if ($param1 == 'send_reply') {
             $this->crud_model->send_reply_message($param2);  //$param2 = message_thread_code
-            $this->session->set_flashdata('flash_message', get_phrase('message_sent!'));
+            $this->session->set_flashdata('flash_message', get_phrase('message envoyé!'));
             redirect(base_url() . 'index.php?parents/message/message_read/' . $param2, 'refresh');
         }
 
@@ -266,7 +266,7 @@ class Parents extends CI_Controller
 
         $page_data['message_inner_page_name']   = $param1;
         $page_data['page_name']                 = 'message';
-        $page_data['page_title']                = get_phrase('private_messaging');
+        $page_data['page_title']                = get_phrase('messagerie privée');
         $this->load->view('backend/index', $page_data);
     }
     
@@ -292,10 +292,10 @@ class Parents extends CI_Controller
             $current_password = $this->db->get_where('parent', array(
                 'parent_id' => $this->session->userdata('parent_id')
             ))->row()->password;
-            if ($current_password == $data['password'] && $data['new_password'] == $data['confirm_new_password']) {
+            if ($current_password == hash('sha256',$data['password']) && $data['new_password'] == $data['confirm_new_password']) {
                 $this->db->where('parent_id', $this->session->userdata('parent_id'));
                 $this->db->update('parent', array(
-                    'password' => $data['new_password']
+                    'password' => hash('sha256',$data['new_password'])
                 ));
                 $this->session->set_flashdata('flash_message', get_phrase('password_updated'));
             } else {
@@ -304,7 +304,7 @@ class Parents extends CI_Controller
             redirect(base_url() . 'index.php?parents/manage_profile/', 'refresh');
         }
         $page_data['page_name']  = 'manage_profile';
-        $page_data['page_title'] = get_phrase('manage_profile');
+        $page_data['page_title'] = get_phrase('Profil');
         $page_data['edit_data']  = $this->db->get_where('parent', array(
             'parent_id' => $this->session->userdata('parent_id')
         ))->result_array();

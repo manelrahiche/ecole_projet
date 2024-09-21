@@ -40,7 +40,7 @@ class Student extends CI_Controller
         if ($this->session->userdata('student_login') != 1)
             redirect(base_url(), 'refresh');
         $page_data['page_name']  = 'dashboard';
-        $page_data['page_title'] = ('Student Dashboard');
+        $page_data['page_title'] = ('Tableau de bord');
         $this->load->view('backend/index', $page_data);
     }
     
@@ -56,7 +56,7 @@ class Student extends CI_Controller
         }
         $page_data['teachers']   = $this->db->get('teacher')->result_array();
         $page_data['page_name']  = 'teacher';
-        $page_data['page_title'] = get_phrase('manage_teacher');
+        $page_data['page_title'] = get_phrase('Enseignants');
         $this->load->view('backend/index', $page_data);
     }
     
@@ -79,7 +79,7 @@ class Student extends CI_Controller
             'class_id' => $student_class_id
         ))->result_array();
         $page_data['page_name']  = 'subject';
-        $page_data['page_title'] = get_phrase('manage_subject');
+        $page_data['page_title'] = get_phrase('Matiéres scolaires');
         $this->load->view('backend/index', $page_data);
     }
     
@@ -117,7 +117,7 @@ class Student extends CI_Controller
         $page_data['page_info'] = 'Exam marks';
         
         $page_data['page_name']  = 'marks';
-        $page_data['page_title'] = get_phrase('manage_exam_marks');
+        $page_data['page_title'] = get_phrase('Notes');
         $this->load->view('backend/index', $page_data);
     }
     
@@ -133,7 +133,7 @@ class Student extends CI_Controller
         ))->row();
         $page_data['class_id']   = $student_profile->class_id;
         $page_data['page_name']  = 'class_routine';
-        $page_data['page_title'] = get_phrase('manage_class_routine');
+        $page_data['page_title'] = get_phrase('Emploi du temps');
         $this->load->view('backend/index', $page_data);
     }
     
@@ -206,7 +206,7 @@ class Student extends CI_Controller
             'student_id' => $student_id
         ))->result_array();
         $page_data['page_name']  = 'invoice';
-        $page_data['page_title'] = get_phrase('manage_invoice/payment');
+        $page_data['page_title'] = get_phrase('Paiements');
         $this->load->view('backend/index', $page_data);
     }
     
@@ -218,7 +218,7 @@ class Student extends CI_Controller
         
         $page_data['books']      = $this->db->get('book')->result_array();
         $page_data['page_name']  = 'book';
-        $page_data['page_title'] = get_phrase('manage_library_books');
+        $page_data['page_title'] = get_phrase('Bibliothèque');
         $this->load->view('backend/index', $page_data);
         
     }
@@ -255,7 +255,7 @@ class Student extends CI_Controller
         
         $page_data['notices']    = $this->db->get('noticeboard')->result_array();
         $page_data['page_name']  = 'noticeboard';
-        $page_data['page_title'] = get_phrase('noticeboard');
+        $page_data['page_title'] = get_phrase('Tableau d\'affichage');
         $this->load->view('backend/index', $page_data);
         
     }
@@ -267,7 +267,7 @@ class Student extends CI_Controller
             redirect('login', 'refresh');
         
         $page_data['page_name']  = 'manage_document';
-        $page_data['page_title'] = get_phrase('manage_documents');
+        $page_data['page_title'] = get_phrase('Documents');
         $page_data['documents']  = $this->db->get('document')->result_array();
         $this->load->view('backend/index', $page_data);
     }
@@ -297,7 +297,7 @@ class Student extends CI_Controller
 
         $page_data['message_inner_page_name']   = $param1;
         $page_data['page_name']                 = 'message';
-        $page_data['page_title']                = get_phrase('private_messaging');
+        $page_data['page_title']                = get_phrase('messagerie privée');
         $this->load->view('backend/index', $page_data);
     }
     
@@ -324,10 +324,10 @@ class Student extends CI_Controller
             $current_password = $this->db->get_where('student', array(
                 'student_id' => $this->session->userdata('student_id')
             ))->row()->password;
-            if ($current_password == $data['password'] && $data['new_password'] == $data['confirm_new_password']) {
+            if ($current_password == hash('sha256',$data['password']) && $data['new_password'] == $data['confirm_new_password']) {
                 $this->db->where('student_id', $this->session->userdata('student_id'));
                 $this->db->update('student', array(
-                    'password' => $data['new_password']
+                    'password' => hash('sha256',$data['new_password'])
                 ));
                 $this->session->set_flashdata('flash_message', get_phrase('password_updated'));
             } else {
@@ -336,7 +336,7 @@ class Student extends CI_Controller
             redirect(base_url() . 'index.php?student/manage_profile/', 'refresh');
         }
         $page_data['page_name']  = 'manage_profile';
-        $page_data['page_title'] = get_phrase('manage_profile');
+        $page_data['page_title'] = get_phrase('Profil');
         $page_data['edit_data']  = $this->db->get_where('student', array(
             'student_id' => $this->session->userdata('student_id')
         ))->result_array();
@@ -354,7 +354,7 @@ class Student extends CI_Controller
         
         $data['study_material_info']    = $this->crud_model->select_study_material_info_for_student();
         $data['page_name']              = 'study_material';
-        $data['page_title']             = get_phrase('study_material');
+        $data['page_title']             = get_phrase('matériel d\'étude');
         $this->load->view('backend/index', $data);
     }
 }

@@ -7,7 +7,7 @@
     <!-- search -->
     <form method="get" role="form" class="mail-search">
         <div class="input-group">
-            <input type="text" class="form-control" name="s" placeholder="Search for mail..." />
+            <input type="text" class="form-control" name="s" />
 
             <div class="input-group-addon">
                 <i class="entypo-search"></i>
@@ -21,6 +21,6 @@
     <img src="<?php echo base_url(); ?>assets/images/inbox.png" width="70">
     <br><br>
     <div>
-        Select a message to read
+        Selectionner un message
     </div>
 </div>

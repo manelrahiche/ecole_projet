@@ -34,7 +34,7 @@
         <li class="<?php if ($page_name == 'dashboard') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?parents/dashboard">
                 <i class="entypo-gauge"></i>
-                <span><?php echo ('Dashboard'); ?></span>
+                <span><?php echo ('Tableau de bord'); ?></span>
             </a>
         </li>
 
@@ -44,7 +44,7 @@
         <li class="<?php if ($page_name == 'teacher') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?parents/teacher_list">
                 <i class="entypo-users"></i>
-                <span><?php echo ('Teacher'); ?></span>
+                <span><?php echo ('Enseignants'); ?></span>
             </a>
         </li>
 
@@ -52,7 +52,7 @@
         <li class="<?php if ($page_name == 'class_routine') echo 'opened active';?> ">
             <a href="#">
                 <i class="entypo-target"></i>
-                <span><?php echo ('Class Routine'); ?></span>
+                <span><?php echo ('Emploi du temps'); ?></span>
             </a>
             <ul>
             <?php 
@@ -75,7 +75,7 @@
         if ($page_name == 'marks') echo 'opened active';?> ">
             <a href="#">
                 <i class="entypo-graduation-cap"></i>
-                <span><?php echo ('Exam Marks'); ?></span>
+                <span><?php echo ('Notes'); ?></span>
             </a>
             <ul>
             <?php 
@@ -94,7 +94,7 @@
         <li class="<?php if ($page_name == 'invoice') echo 'opened active';?> ">
             <a href="#">
                 <i class="entypo-credit-card"></i>
-                <span><?php echo ('Payment'); ?></span>
+                <span><?php echo ('Paiements'); ?></span>
             </a>
             <ul>
             <?php 
@@ -114,23 +114,18 @@
         <li class="<?php if ($page_name == 'book') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?parents/book">
                 <i class="entypo-book"></i>
-                <span><?php echo ('Library'); ?></span>
+                <span><?php echo ('Bibliothèque'); ?></span>
             </a>
         </li>
 
-        <!-- TRANSPORT -->
-        <li class="<?php if ($page_name == 'transport') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?parents/transport">
-                <i class="entypo-location"></i>
-                <span><?php echo ('Transport'); ?></span>
-            </a>
-        </li>
+       
+       
 
         <!-- NOTICEBOARD -->
         <li class="<?php if ($page_name == 'noticeboard') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?parents/noticeboard">
                 <i class="entypo-doc-text-inv"></i>
-                <span><?php echo ('Noticeboard'); ?></span>
+                <span><?php echo ('Tableau d\'affichage'); ?></span>
             </a>
         </li>
 
@@ -146,7 +141,7 @@
         <li class="<?php if ($page_name == 'manage_profile') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?parents/manage_profile">
                 <i class="entypo-lock"></i>
-                <span><?php echo ('Account'); ?></span>
+                <span><?php echo ('Profil'); ?></span>
             </a>
         </li>
 

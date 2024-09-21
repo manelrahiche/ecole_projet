@@ -40,28 +40,28 @@ foreach($student_info as $row):?>
                 
                     <?php if($row['class_id'] != ''):?>
                     <tr>
-                        <td>Class</td>
+                        <td>Classe</td>
                         <td><b><?php echo $this->crud_model->get_class_name($row['class_id']);?></b></td>
                     </tr>
                     <?php endif;?>
                 
                     <?php if($row['roll'] != ''):?>
                     <tr>
-                        <td>Roll</td>
+                        <td>Rang</td>
                         <td><b><?php echo $row['roll'];?></b></td>
                     </tr>
                     <?php endif;?>
                 
                     <?php if($row['birthday'] != ''):?>
                     <tr>
-                        <td>Birthday</td>
+                        <td>Date de naissance</td>
                         <td><b><?php echo $row['birthday'];?></b></td>
                     </tr>
                     <?php endif;?>
                 
                     <?php if($row['sex'] != ''):?>
                     <tr>
-                        <td>Gender</td>
+                        <td>Genre</td>
                         <td><b><?php echo $row['sex'];?></b></td>
                     </tr>
                     <?php endif;?>
@@ -69,7 +69,7 @@ foreach($student_info as $row):?>
                 
                     <?php if($row['phone'] != ''):?>
                     <tr>
-                        <td>Phone</td>
+                        <td>Mobile</td>
                         <td><b><?php echo $row['phone'];?></b></td>
                     </tr>
                     <?php endif;?>
@@ -83,7 +83,7 @@ foreach($student_info as $row):?>
                 
                     <?php if($row['address'] != ''):?>
                     <tr>
-                        <td>Address</td>
+                        <td>Adresse</td>
                         <td><b><?php echo $row['address'];?></b>
                         </td>
                     </tr>

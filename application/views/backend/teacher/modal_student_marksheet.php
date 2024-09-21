@@ -22,7 +22,8 @@ foreach ($student_info as $row1):
             foreach ($exams as $row0):
 
                 $total_grade_point = 0;
-                $total_marks = 0;
+                $total_moy = 0;
+                $total_coef=0;
                 $total_subjects = 0;
                 ?>
                 <div class="panel panel-default">
@@ -46,11 +47,10 @@ foreach ($student_info as $row1):
                                     <thead>
                                         <tr>
                                             <th>Matiére scolaire</th>
-                                            <th>controle continu</th>
-                                            <th>devoir 1</th>
-                                            <th>devoir2</th>
-                                            <th>projet</th>
-                                            <th>examen</th>
+                                            <th>Devoir</th>
+                                            <th>Examen</th>
+                                            <th>Total</th>
+                                            <th>Moyenne</th>
                                             <th>Remarque</th>
                                         </tr>
                                     </thead>
@@ -74,7 +74,7 @@ foreach ($student_info as $row1):
                                                     $query = $this->db->get_where('mark', $verify_data);
                                                     $marks = $query->result_array();
                                                     foreach ($marks as $row3):
-                                                        echo $row3['control'];
+                                                        echo $row3['devoir'];
                                                        
                                                     endforeach;
                                                     
@@ -83,7 +83,7 @@ foreach ($student_info as $row1):
                                                 <td>
                                                     <?php
                                                     foreach ($marks as $row4):
-                                                        echo $row4['dev1'];
+                                                        echo $row4['exam'];
                                                      
                                                      endforeach;
                                                     ?>
@@ -91,45 +91,36 @@ foreach ($student_info as $row1):
                                                 <td>
                                                     <?php
                                                     foreach ($marks as $row5):
-                                                        echo $row5['dev2'];
+                                                        echo $row3['devoir']+$row4['exam']*2;
                                                      endforeach;
                                                     ?>
                                                 </td>
                                                 <td>
                                                     <?php
                                                     foreach ($marks as $row6):
-                                                        echo $row6['projet'];
-                                                        
+                                                        echo round(($row3['devoir']+$row4['exam']*2)/3,2);
+                                                        $total_moy += ($row3['devoir']+$row4['exam']*2)/3;
+                                                        $total_coef += 1;
                                                      endforeach;
                                                     ?>
                                                 </td><td>
                                                     <?php
                                                     foreach ($marks as $row7):
-                                                        echo $row7['exam'];
+                                                        echo $row7['comment'];
                                                         $moyenne+= $row7['dev1'];
                                                      endforeach;
                                                     ?>
                                                 </td>
-                                                <td>
-                                                    <?php
-                                                    foreach ($marks as $row8):
-                                                        echo $row8['comment'];
-                                                       
-                                                     endforeach;
-                                                    //$grade = $this->crud_model->get_grade($row3['mark_obtained']);
-                                                    //echo $grade['name'];
-                                                    //$total_grade_point += $grade['grade_point'];
-                                                    ?>
-                                                </td>
-                                                <td></td>
+                                              
+                                               
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
                                 <hr />
-                                Total Marks : <?php //echo $total_marks; ?>
+                              
                                 <hr />
-                                GPA(grade point average) : <?php //echo round($total_grade_point / $total_subjects, 2); ?>
+                                Moyenne générale: <?php echo round($total_moy/$total_coef, 2); ?>
                                 <div id="chartdiv"></div>
                                 <script>
                                     setTimeout(function() {

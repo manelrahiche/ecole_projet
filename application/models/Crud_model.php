@@ -214,6 +214,7 @@ class Crud_model extends CI_Model {
         $data['file_name'] 	= $_FILES["file_name"]["name"];
         $data['file_type'] 	= $this->input->post('file_type');
         $data['class_id'] 	= $this->input->post('class_id');
+        $data['teacher_id'] =$_SESSION['teacher_id'];
         
         $this->db->insert('document',$data);
         

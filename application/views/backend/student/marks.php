@@ -5,7 +5,7 @@
 		<ul class="nav nav-tabs bordered">
 			<li class="active">
             	<a href="#list" data-toggle="tab"><i class="entypo-menu"></i> 
-					<?php echo ('Manage Marks');?>
+					<?php echo ('Notes');?>
                     	</a></li>
 		</ul>
     	<!------CONTROL TABS END----->
@@ -17,21 +17,21 @@
                 <?php echo form_open(base_url() . 'index.php?student/marks');?>
                 <table border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-hover table-striped">
                 	<tr>
-                        <td><?php echo ('Select Exam');?></td>
-                        <td><?php echo ('Select Subject');?></td>
+                        <td><?php echo ('Selectionner une saison');?></td>
+                        <td><?php echo ('Selectionner une matiére');?></td>
                         <td>&nbsp;</td>
                 	</tr>
                 	<tr>
                         <td>
                         	<select name="exam_id" class="form-control"  style="float:left;">
-                                <option value=""><?php echo ('Select an exam');?></option>
+                                <option value=""><?php echo ('Selectionner une saison');?></option>
                                 <?php 
                                 $exams = $this->db->get('exam')->result_array();
                                 foreach($exams as $row):
                                 ?>
                                     <option value="<?php echo $row['exam_id'];?>"
                                         <?php if($exam_id == $row['exam_id'])echo 'selected';?>>
-                                            <?php echo ('Class');?> <?php echo $row['name'];?></option>
+                                            <?php echo ('Classe');?> <?php echo $row['name'];?></option>
                                 <?php
                                 endforeach;
                                 ?>
@@ -40,7 +40,7 @@
                         <td>
                         	<!-----SELECT SUBJECT ACCORDING TO SELECTED CLASS-------->
                                 <select name="subject_id" class="form-control" >
-                                    <option value=""><?php echo ('Select Subject');?></option>
+                                    <option value=""><?php echo ('Selectionner une matiére');?></option>
                                     <?php 
                                     $subjects	=	$this->crud_model->get_subjects_by_class($class_id); 
                                     foreach($subjects as $row2): ?>
@@ -56,7 +56,7 @@
                         <td>
                          <input type="hidden" name="class_id" value="<?php echo $class_id;?>" />
                         	<input type="hidden" name="operation" value="selection" />
-                    		<input type="submit" value="<?php echo ('Manage Marks');?>" class="btn btn-info" />
+                    		<input type="submit" value="<?php echo ('Voir les notes');?>" class="btn btn-info" />
                         </td>
                 	</tr>
                 </table>
@@ -85,9 +85,10 @@
                 <table class="table table-bordered table-hover table-striped" >
                     <thead>
                         <tr>
-                            <td><?php echo ('Student');?></td>
-                            <td><?php echo ('Mark Obtained');?>(out of 100)</td>
-                            <td><?php echo ('Comment');?></td>
+                            <td><?php echo ('Élève');?></td>
+							<td><?php echo ('Devoir');?> (/10)</td>
+							<td><?php echo ('Composition');?> (/10)</td>
+							<td><?php echo ('Commentaire');?></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -110,7 +111,11 @@
 									<?php echo $row['name'];?>
 								</td>
 								<td style="text-align:center;">
-									 <?php echo $row2['mark_obtained'];?>
+									 <?php echo $row2['devoir'];?>
+												
+								</td>
+                                <td style="text-align:center;">
+									 <?php echo $row2['exam'];?>
 												
 								</td>
 								<td style="width:200px;">

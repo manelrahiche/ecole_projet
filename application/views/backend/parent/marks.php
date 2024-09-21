@@ -39,11 +39,11 @@
                     <table class="table table-bordered table-hover table-striped responsive">
                         <thead>
                             <tr>
-                                <th width="15%"><?php echo ('Class');?></th>
-                                <th><?php echo ('Subject');?></th>
-                                <th><?php echo ('Total Mark');?></th>
-                                <th><?php echo ('Mark Obtained');?></th>
-                                <th width="33%"><?php echo ('Comment');?></th>
+                                <th width="15%"><?php echo ('Classe');?></th>
+                                <th><?php echo ('Matiére scolaire');?></th>
+                                <th><?php echo ('devoir');?></th>
+                                <th><?php echo ('composition');?></th>
+                                <th width="33%"><?php echo ('Commentaire');?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,8 +59,8 @@
                                         'subject_id' => $mark['subject_id']
                                     ))->row()->name;?>
                                 </td>
-                                <td><?php echo $mark['mark_total'];?></td>
-                                <td><?php echo $mark['mark_obtained'];?></td>
+                                <td><?php echo $mark['devoir'];?></td>
+                                <td><?php echo $mark['exam'];?></td>
                                 <td><?php echo $mark['comment'];?></td>
                             </tr>
                         <?php endforeach;?>

@@ -3,9 +3,9 @@
                <table class="table table-bordered table-hover table-striped datatable" id="table_export">
                     <thead>
                         <tr>
-                            <th><div><?php echo ('Roll');?></div></th>
+                            <th><div><?php echo ('Rang');?></div></th>
                             <th><div><?php echo ('Photo');?></div></th>
-                            <th><div><?php echo ('Name');?></div></th>
+                            <th><div><?php echo ('Nom et prénom');?></div></th>
                             <th><div><?php echo ('Options');?></div></th>
                         </tr>
                     </thead>
@@ -20,7 +20,7 @@
                             <td>
                                 <a href="#" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_student_marksheet/<?php echo $row['student_id'];?>');" class="btn btn-default" >
                                       <i class="entypo-chart-bar"></i>
-                                          <?php echo ('View Marksheet');?>
+                                          <?php echo ('voir la feuille de note');?>
                                       </a>
                                 
                                 

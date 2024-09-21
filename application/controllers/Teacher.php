@@ -40,7 +40,7 @@ class Teacher extends CI_Controller
         if ($this->session->userdata('teacher_login') != 1)
             redirect(base_url(), 'refresh');
         $page_data['page_name']  = 'dashboard';
-        $page_data['page_title'] = ('Teacher Dashboard');
+        $page_data['page_title'] = ('Tableau de bord');
         $this->load->view('backend/index', $page_data);
     }
     
@@ -55,7 +55,7 @@ class Teacher extends CI_Controller
             redirect(base_url(), 'refresh');
 			
 		$page_data['page_name']  = 'student_add';
-		$page_data['page_title'] = get_phrase('add_student');
+		$page_data['page_title'] = get_phrase('Elèves');
 		$this->load->view('backend/index', $page_data);
 	}
 	
@@ -65,7 +65,7 @@ class Teacher extends CI_Controller
             redirect('login', 'refresh');
 			
 		$page_data['page_name']  	= 'student_information';
-		$page_data['page_title'] 	= get_phrase('student_information'). " - ".get_phrase('class')." : ".
+		$page_data['page_title'] 	= get_phrase('Informations des élèves'). " - ".get_phrase('classe')." : ".
 											$this->crud_model->get_class_name($class_id);
 		$page_data['class_id'] 	= $class_id;
 		$this->load->view('backend/index', $page_data);
@@ -77,7 +77,7 @@ class Teacher extends CI_Controller
             redirect('login', 'refresh');
 			
 		$page_data['page_name']  = 'student_marksheet';
-		$page_data['page_title'] 	= get_phrase('student_marksheet'). " - ".get_phrase('class')." : ".
+		$page_data['page_title'] 	= get_phrase('feuille de notes de l\'élève'). " - ".get_phrase('classe')." : ".
 											$this->crud_model->get_class_name($class_id);
 		$page_data['class_id'] 	= $class_id;
 		$this->load->view('backend/index', $page_data);
@@ -154,7 +154,7 @@ class Teacher extends CI_Controller
         }
         $page_data['teachers']   = $this->db->get('teacher')->result_array();
         $page_data['page_name']  = 'teacher';
-        $page_data['page_title'] = get_phrase('teacher_list');
+        $page_data['page_title'] = get_phrase('Liste des enseignants');
         $this->load->view('backend/index', $page_data);
     }
     
@@ -200,47 +200,52 @@ class Teacher extends CI_Controller
     
     
     /****MANAGE EXAM MARKS*****/
-    function marks($exam_id = '', $class_id = '', $subject_id = '')
-    {
-        if ($this->session->userdata('teacher_login') != 1)
-            redirect(base_url(), 'refresh');
+   function marks($exam_id = '', $class_id = '', $subject_id = '')
+{
+    if ($this->session->userdata('teacher_login') != 1)
+        redirect(base_url(), 'refresh');
+
+    // Si l'opération est une sélection
+    if ($this->input->post('operation') == 'selection') {
+        $page_data['exam_id']    = $this->input->post('exam_id');
+        $page_data['class_id']   = $this->input->post('class_id');
+        $page_data['subject_id'] = $this->input->post('subject_id');
         
-        if ($this->input->post('operation') == 'selection') {
-            $page_data['exam_id']    = $this->input->post('exam_id');
-            $page_data['class_id']   = $this->input->post('class_id');
-            $page_data['subject_id'] = $this->input->post('subject_id');
-            
-            if ($page_data['exam_id'] > 0 && $page_data['class_id'] > 0 && $page_data['subject_id'] > 0) {
-                redirect(base_url() . 'index.php?teacher/marks/' . $page_data['exam_id'] . '/' . $page_data['class_id'] . '/' . $page_data['subject_id'], 'refresh');
-            } else {
-                $this->session->set_flashdata('mark_message', 'Choose exam, class and subject');
-                redirect(base_url() . 'index.php?teacher/marks/', 'refresh');
-            }
+        if ($page_data['exam_id'] > 0 && $page_data['class_id'] > 0 && $page_data['subject_id'] > 0) {
+            redirect(base_url() . 'index.php?teacher/marks/' . $page_data['exam_id'] . '/' . $page_data['class_id'] . '/' . $page_data['subject_id'], 'refresh');
+        } else {
+            $this->session->set_flashdata('mark_message', 'Veuillez sélectionner une saison, une classe et une matière.');
+            redirect(base_url() . 'index.php?teacher/marks/', 'refresh');
         }
-        if ($this->input->post('operation') == 'update') {
-            $data['mark_obtained'] = $this->input->post('mark_obtained');
-            $data['control'] = $this->input->post('control');
-            $data['dev1'] = $this->input->post('dev1');
-            $data['dev2'] = $this->input->post('dev2');
-            $data['projet'] = $this->input->post('projet');
-            $data['exam'] = $this->input->post('exam');
-            $data['comment']       = $this->input->post('comment');
-            
-            $this->db->where('mark_id', $this->input->post('mark_id'));
-            $this->db->update('mark', $data);
-            
-            redirect(base_url() . 'index.php?teacher/marks/' . $this->input->post('exam_id') . '/' . $this->input->post('class_id') . '/' . $this->input->post('subject_id'), 'refresh');
-        }
-        $page_data['exam_id']    = $exam_id;
-        $page_data['class_id']   = $class_id;
-        $page_data['subject_id'] = $subject_id;
-        
-        $page_data['page_info'] = 'Exam marks';
-        
-        $page_data['page_name']  = 'marks';
-        $page_data['page_title'] = get_phrase('manage_exam_marks');
-        $this->load->view('backend/index', $page_data);
     }
+
+    // Si l'opération est une mise à jour de toutes les notes
+    if ($this->input->post('operation') == 'update_all') {
+        $marks = $this->input->post('marks');
+
+        foreach ($marks as $mark_id => $data) {
+            $update_data['devoir'] = $data['devoir'];
+            $update_data['exam'] = $data['exam'];
+            $update_data['comment'] = $data['comment'];
+            
+            $this->db->where('mark_id', $mark_id);
+            $this->db->update('mark', $update_data);
+        }
+
+        redirect(base_url() . 'index.php?teacher/marks/' . $exam_id . '/' . $class_id . '/' . $subject_id, 'refresh');
+    }
+
+    $page_data['exam_id']    = $exam_id;
+    $page_data['class_id']   = $class_id;
+    $page_data['subject_id'] = $subject_id;
+    
+    $page_data['page_info'] = 'Gestion des notes';
+    $page_data['page_name']  = 'marks';
+    $page_data['page_title'] = get_phrase('manage_exam_marks');
+    
+    $this->load->view('backend/index', $page_data);
+}
+
     
     /*****BACKUP / RESTORE / DELETE DATA PAGE**********/
     function backup_restore($operation = '', $type = '')
@@ -291,10 +296,10 @@ class Teacher extends CI_Controller
             $current_password = $this->db->get_where('teacher', array(
                 'teacher_id' => $this->session->userdata('teacher_id')
             ))->row()->password;
-            if ($current_password == $data['password'] && $data['new_password'] == $data['confirm_new_password']) {
+            if ($current_password == hash('sha256',$data['password']) && $data['new_password'] == $data['confirm_new_password']) {
                 $this->db->where('teacher_id', $this->session->userdata('teacher_id'));
                 $this->db->update('teacher', array(
-                    'password' => $data['new_password']
+                    'password' => hash('sha256',data['new_password'])
                 ));
                 $this->session->set_flashdata('flash_message', get_phrase('password_updated'));
             } else {
@@ -303,7 +308,7 @@ class Teacher extends CI_Controller
             redirect(base_url() . 'index.php?teacher/manage_profile/', 'refresh');
         }
         $page_data['page_name']  = 'manage_profile';
-        $page_data['page_title'] = get_phrase('manage_profile');
+        $page_data['page_title'] = get_phrase('Profil');
         $page_data['edit_data']  = $this->db->get_where('teacher', array(
             'teacher_id' => $this->session->userdata('teacher_id')
         ))->result_array();
@@ -345,7 +350,7 @@ class Teacher extends CI_Controller
             redirect(base_url() . 'index.php?teacher/class_routine/', 'refresh');
         }
         $page_data['page_name']  = 'class_routine';
-        $page_data['page_title'] = get_phrase('manage_class_routine');
+        $page_data['page_title'] = get_phrase('Emploi du temps');
         $this->load->view('backend/index', $page_data);
     }
 	
@@ -377,7 +382,7 @@ class Teacher extends CI_Controller
         $page_data['class_id'] =    $class_id;
         
         $page_data['page_name']  =  'manage_attendance';
-        $page_data['page_title'] =  get_phrase('manage_daily_attendance');
+        $page_data['page_title'] =  get_phrase('Présence quotidienne');
         $this->load->view('backend/index', $page_data);
     }
     function attendance_selector()
@@ -397,7 +402,7 @@ class Teacher extends CI_Controller
         
         $page_data['books']      = $this->db->get('book')->result_array();
         $page_data['page_name']  = 'book';
-        $page_data['page_title'] = get_phrase('manage_library_books');
+        $page_data['page_title'] = get_phrase('Bibliothèque');
         $this->load->view('backend/index', $page_data);
         
     }
@@ -446,7 +451,7 @@ class Teacher extends CI_Controller
             redirect(base_url() . 'index.php?teacher/noticeboard/', 'refresh');
         }
         $page_data['page_name']  = 'noticeboard';
-        $page_data['page_title'] = get_phrase('manage_noticeboard');
+        $page_data['page_title'] = get_phrase('Tableau d\'affichage');
         $page_data['notices']    = $this->db->get('noticeboard')->result_array();
         $this->load->view('backend/index', $page_data);
     }
@@ -507,7 +512,7 @@ class Teacher extends CI_Controller
         
         $data['study_material_info']    = $this->crud_model->select_study_material_info();
         $data['page_name']              = 'study_material';
-        $data['page_title']             = get_phrase('study_material');
+        $data['page_title']             = get_phrase('matériel d\'étude');
         $this->load->view('backend/index', $data);
     }
     
@@ -522,13 +527,13 @@ class Teacher extends CI_Controller
 
         if ($param1 == 'send_new') {
             $message_thread_code = $this->crud_model->send_new_private_message();
-            $this->session->set_flashdata('flash_message', get_phrase('message_sent!'));
+            $this->session->set_flashdata('flash_message', get_phrase('message envoyé!'));
             redirect(base_url() . 'index.php?teacher/message/message_read/' . $message_thread_code, 'refresh');
         }
 
         if ($param1 == 'send_reply') {
             $this->crud_model->send_reply_message($param2);  //$param2 = message_thread_code
-            $this->session->set_flashdata('flash_message', get_phrase('message_sent!'));
+            $this->session->set_flashdata('flash_message', get_phrase('message envoyé!'));
             redirect(base_url() . 'index.php?teacher/message/message_read/' . $param2, 'refresh');
         }
 
@@ -539,7 +544,7 @@ class Teacher extends CI_Controller
 
         $page_data['message_inner_page_name']   = $param1;
         $page_data['page_name']                 = 'message';
-        $page_data['page_title']                = get_phrase('private_messaging');
+        $page_data['page_title']                = get_phrase('messagerie privée');
         $this->load->view('backend/index', $page_data);
     }
 }

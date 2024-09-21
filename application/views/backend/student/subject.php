@@ -5,7 +5,7 @@
 		<ul class="nav nav-tabs bordered">
 			<li class="active">
             	<a href="#list" data-toggle="tab"><i class="entypo-menu"></i> 
-					<?php echo ('Subject List');?>
+					<?php echo ('Liste des matiéres scolaires');?>
                     	</a></li>
 		</ul>
     	<!------CONTROL TABS END------>
@@ -16,9 +16,9 @@
                 <table class="table table-bordered table-hover table-striped datatable" id="table_export">
                 	<thead>
                 		<tr>
-                    		<th><div><?php echo ('Class');?></div></th>
-                    		<th><div><?php echo ('Subject Name');?></div></th>
-                    		<th><div><?php echo ('Teacher');?></div></th>
+                    		<th><div><?php echo ('Classe');?></div></th>
+                    		<th><div><?php echo ('Module');?></div></th>
+                    		<th><div><?php echo ('Enseignant');?></div></th>
 						</tr>
 					</thead>
                     <tbody>

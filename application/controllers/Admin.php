@@ -1570,10 +1570,10 @@ $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfu
             $current_password = $this->db->get_where('admin', array(
                 'admin_id' => $this->session->userdata('admin_id')
             ))->row()->password;
-            if ($current_password == $data['password'] && $data['new_password'] == $data['confirm_new_password']) {
+            if ($current_password == hash('sha256', $data['password'] )&& $data['new_password'] == $data['confirm_new_password']) {
                 $this->db->where('admin_id', $this->session->userdata('admin_id'));
                 $this->db->update('admin', array(
-                    'password' => $data['new_password']
+                    'password' => hash('sha256',$data['new_password'])
                 ));
                 $this->session->set_flashdata('flash_message', get_phrase('password_updated'));
             } else {

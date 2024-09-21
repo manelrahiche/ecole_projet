@@ -30,11 +30,11 @@ foreach ($messages as $row):
 <div class="mail-reply">
     <div class="compose-message-editor">
         <textarea row="5" class="form-control wysihtml5" data-stylesheet-url="assets/css/wysihtml5-color.css" name="message" 
-                  placeholder="<?php echo ('Reply Message'); ?>" id="sample_wysiwyg"></textarea>
+                  placeholder="<?php echo ('Message de réponse'); ?>" id="sample_wysiwyg"></textarea>
     </div>
     <br>
     <button type="submit" class="btn btn-success btn-icon pull-right">
-        <?php echo ('Send'); ?>
+        <?php echo ('Envoyer'); ?>
         <i class="entypo-mail"></i>
     </button>
     <br><br>

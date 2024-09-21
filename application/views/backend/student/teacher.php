@@ -3,7 +3,7 @@
                     <thead>
                         <tr>
                             <th width="80"><div><?php echo ('Photo');?></div></th>
-                            <th><div><?php echo ('Name');?></div></th>
+                            <th><div><?php echo ('Nom et prénom');?></div></th>
                             <th><div><?php echo ('Email');?></div></th>
                         </tr>
                     </thead>

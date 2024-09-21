@@ -130,6 +130,12 @@ class Login extends CI_Controller {
     {
         $this->load->view('backend/forgot_password');
     }
+     
+    function add_parent()
+    {
+        $this->load->view('backend/add_parent');
+        echo '<script src="assets/js/neon-custom-ajax.js"></script>';
+    }
 
     function ajax_forgot_password()
     {

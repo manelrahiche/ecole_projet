@@ -21,6 +21,6 @@
     <img src="<?php echo base_url(); ?>assets/images/inbox.png" width="70">
     <br><br>
     <div>
-        Select a message to read
+        Selectionner une conversation
     </div>
 </div>

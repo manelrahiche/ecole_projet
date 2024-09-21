@@ -15,7 +15,7 @@
 		<ul class="nav nav-tabs bordered">
 			<li class="active">
             	<a href="#list" data-toggle="tab"><i class="entypo-menu"></i> 
-					<?php echo ('Class Routine List');?>
+					<?php echo ('Emploi du temps');?>
                     	</a></li>
 		</ul>
 
@@ -33,7 +33,7 @@
                                 <div class="panel-heading">
                                 		<h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapse<?php echo $row['class_id'];?>">
-                                        <i class="entypo-rss"></i> Class <?php echo $row['class_id'];?>
+                                        <i class="entypo-rss"></i> Classe <?php echo $row['class_id'];?>
                                     </a>
                                     </h4>
                                 </div>
@@ -43,15 +43,14 @@
                                         <table cellpadding="0" cellspacing="0" border="0"  class="table table-bordered table-hover table-striped">
                                             <tbody>
                                                 <?php 
-                                                for($d=1;$d<=7;$d++):
+                                                for($d=1;$d<=5;$d++):
                                                 
-                                                if($d==1)$day='sunday';
-                                                else if($d==2)$day='monday';
-                                                else if($d==3)$day='tuesday';
-                                                else if($d==4)$day='wednesday';
-                                                else if($d==5)$day='thursday';
-                                                else if($d==6)$day='friday';
-                                                else if($d==7)$day='saturday';
+                                                if($d==1)$day='Dimanche';
+                                                else if($d==2)$day='Lundi';
+                                                else if($d==3)$day='Mardi';
+                                                else if($d==4)$day='Mercredi';
+                                                else if($d==5)$day='Jeudi';
+                                               
                                                 ?>
                                                 <tr class="gradeA">
                                                     <td width="100"><?php echo strtoupper($day);?></td>
@@ -65,7 +64,7 @@
 														?>
 															<button class="btn btn-primary" >
                                                          <?php echo $this->crud_model->get_subject_name_by_id($row2['subject_id']);?>
-																<?php echo '('.$row2['time_start'].'-'.$row2['time_end'].')';?>
+																<?php echo '('.$row2['time_start'].':30-'.$row2['time_end'].':30)';?>
                                                             </button>
 														<?php endforeach;?>
 

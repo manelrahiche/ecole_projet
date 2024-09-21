@@ -5,7 +5,7 @@
 		<ul class="nav nav-tabs bordered">
 			<li class="active">
             	<a href="#list" data-toggle="tab"><i class="entypo-menu"></i> 
-					<?php echo ('Book List');?>
+					<?php echo ('Liste des livres');?>
                     	</a></li>
 		</ul>
     	<!------CONTROL TABS END------>
@@ -19,12 +19,12 @@
                 	<thead>
                 		<tr>
                     		<th><div>#</div></th>
-                    		<th><div><?php echo ('Book name');?></div></th>
-                    		<th><div><?php echo ('Author');?></div></th>
+                    		<th><div><?php echo ('Titre du livre');?></div></th>
+                    		<th><div><?php echo ('Auteur');?></div></th>
                     		<th><div><?php echo ('Description');?></div></th>
-                    		<th><div><?php echo ('Price');?></div></th>
-                    		<th><div><?php echo ('Class');?></div></th>
-                    		<th><div><?php echo ('Status');?></div></th>
+                    		<th><div><?php echo ('Prix');?></div></th>
+                    		<th><div><?php echo ('Classe');?></div></th>
+                    		<th><div><?php echo ('Statut');?></div></th>
 						</tr>
 					</thead>
                     <tbody>

@@ -5,7 +5,7 @@
 		<ul class="nav nav-tabs bordered">
 			<li class="active">
             	<a href="#list" data-toggle="tab"><i class="entypo-menu"></i> 
-					<?php echo ('Invoice/Payment List');?>
+					<?php echo ('Liste des paiements/factures');?>
                     	</a></li>
 		</ul>
     	<!------CONTROL TABS END------>
@@ -16,13 +16,13 @@
                 <table  class="table table-bordered table-hover table-striped datatable" id="table_export">
                 	<thead>
                 		<tr>
-                    		<th><div><?php echo ('Student');?></div></th>
-                    		<th><div><?php echo ('Title');?></div></th>
+                    		<th><div><?php echo ('Elève');?></div></th>
+                    		<th><div><?php echo ('Titre');?></div></th>
                     		<th><div><?php echo ('Description');?></div></th>
-                    		<th><div><?php echo ('Amount');?></div></th>
-                    		<th><div><?php echo ('Status');?></div></th>
+                    		<th><div><?php echo ('Montant');?></div></th>
+                    		<th><div><?php echo ('Statut');?></div></th>
                     		<th><div><?php echo ('Date');?></div></th>
-                    		<th><div><?php echo ('Options');?></div></th>
+                    	
 						</tr>
 					</thead>
                     <tbody>
@@ -36,14 +36,7 @@
 								<span class="label label-<?php if($row['status']=='paid')echo 'success';else echo 'secondary';?>"><?php echo $row['status'];?></span>
 							</td>
 							<td><?php echo date('d M,Y', $row['creation_timestamp']);?></td>
-							<td>
-                            <?php echo form_open('student/invoice/make_payment');?>
-                                	<input type="hidden" name="invoice_id" 		value="<?php echo $row['invoice_id'];?>" />
-                                		<button type="submit" class="btn btn-info"><i class="entypo-paypal"></i> Pay with paypal</button>
-                                </form>
-                                
-                            
-        					</td>
+							
                         </tr>
                         <?php endforeach;?>
                     </tbody>

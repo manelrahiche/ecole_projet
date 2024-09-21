@@ -6,7 +6,7 @@
 
             <div class="panel-heading">
                 <div class="panel-title">
-                    <h3><?php echo ('Add Study Material'); ?></h3>
+                    <h3><?php echo ('Ajouter un matériel d\'étude'); ?></h3>
                 </div>
             </div>
 
@@ -25,7 +25,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="field-1" class="col-sm-3 control-label"><?php echo ('Title'); ?></label>
+                        <label for="field-1" class="col-sm-3 control-label"><?php echo ('Titre'); ?></label>
 
                         <div class="col-sm-5">
                             <input type="text" name="title" class="form-control" id="field-1" >
@@ -41,7 +41,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="field-ta" class="col-sm-3 control-label"><?php echo ('Class'); ?></label>
+                        <label for="field-ta" class="col-sm-3 control-label"><?php echo ('Classe'); ?></label>
 
                         <div class="col-sm-5">
                             <select name="class_id" class="form-control">
@@ -54,7 +54,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label class="col-sm-3 control-label"><?php echo ('File'); ?></label>
+                        <label class="col-sm-3 control-label"><?php echo ('Fichier'); ?></label>
 
                         <div class="col-sm-5">
 
@@ -64,16 +64,16 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="field-ta" class="col-sm-3 control-label"><?php echo ('File type'); ?></label>
+                        <label for="field-ta" class="col-sm-3 control-label"><?php echo ('Type de fichier'); ?></label>
 
                         <div class="col-sm-5">
                             <select name="file_type" class="form-control">
-                                <option value=""><?php echo ('Select file type'); ?></option>
+                                <option value=""><?php echo ('Selectionner le type de fichier'); ?></option>
                                 <option value="Image"><?php echo ('Image'); ?></option>
-                                <option value="Doc"><?php echo ('Doc'); ?></option>
+                                <option value="Doc"><?php echo ('Document'); ?></option>
                                 <option value="PDF"><?php echo ('PDF'); ?></option>
                                 <option value="Excel"><?php echo ('Excel'); ?></option>
-                                <option value="Other"><?php echo ('Other'); ?></option>
+                                <option value="Other"><?php echo ('autre'); ?></option>
                             </select>
                         </div>
                     </div>

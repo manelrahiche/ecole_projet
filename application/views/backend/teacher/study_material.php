@@ -1,6 +1,6 @@
 <button onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_study_material_add');" 
     class="btn btn-primary pull-right">
-        <?php echo ('Add Study Material'); ?>
+        <?php echo ('Ajouter du matériel d\'étude'); ?>
 </button>
 <div style="clear:both;"></div>
 <br>
@@ -9,10 +9,10 @@
         <tr>
             <th>#</th>
             <th><?php echo ('Date');?></th>
-            <th><?php echo ('Title');?></th>
+            <th><?php echo ('Titre');?></th>
             <th><?php echo ('Description');?></th>
-            <th><?php echo ('Class');?></th>
-            <th><?php echo ('Download');?></th>
+            <th><?php echo ('Classe');?></th>
+            <th><?php echo ('Télécharger');?></th>
             <th><?php echo ('Options');?></th>
         </tr>
     </thead>
@@ -33,19 +33,19 @@
                 <td>
                     <a href="<?php echo base_url().'uploads/document/'.$row['file_name']; ?>" class="btn btn-blue btn-icon icon-left">
                         <i class="entypo-download"></i>
-                        Download
+                        Télécharger
                     </a>
                 </td>
                 <td>
                     <a  onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_study_material_edit/<?php echo $row['document_id']?>');" 
                         class="btn btn-default btn-sm btn-icon icon-left">
                             <i class="entypo-pencil"></i>
-                            Edit
+                            Modifier
                     </a>
                     <a href="<?php echo base_url();?>index.php?teacher/study_material/delete/<?php echo $row['document_id']?>" 
-                        class="btn btn-danger btn-sm btn-icon icon-left" onclick="return confirm('Are you sure to delete?');">
+                        class="btn btn-danger btn-sm btn-icon icon-left" onclick="return confirm('Etes-vous sûr de vouloir supprimer ?');">
                             <i class="entypo-cancel"></i>
-                            Delete
+                            Supprimer
                     </a>
                 </td>
             </tr>
@@ -53,7 +53,7 @@
     </tbody>
 </table>
 
-<script type="text/javascript">
+<<!--<script type="text/javascript">
     jQuery(window).load(function ()
     {
         var $ = jQuery;
@@ -84,6 +84,39 @@
         // Replace Checboxes
         $(".pagination a").click(function (ev)
         {
+            replaceCheckboxes();
+        });
+    });
+</script>
+-->
+<script type="text/javascript">
+    jQuery(window).load(function () {
+        var $ = jQuery;
+
+        $("#table-2").dataTable({
+            "sPaginationType": "bootstrap",
+            // Suppression de l'élément 'T' qui représente les options d'exportation
+            "sDom": "<'row'<'col-xs-3 col-left'l><'col-xs-9 col-right'f>r>t<'row'<'col-xs-3 col-left'i><'col-xs-9 col-right'p>>"
+        });
+
+        $(".dataTables_wrapper select").select2({
+            minimumResultsForSearch: -1
+        });
+
+        // Highlighted rows
+        $("#table-2 tbody input[type=checkbox]").each(function (i, el) {
+            var $this = $(el),
+                $p = $this.closest('tr');
+
+            $(el).on('change', function () {
+                var is_checked = $this.is(':checked');
+
+                $p[is_checked ? 'addClass' : 'removeClass']('highlight');
+            });
+        });
+
+        // Replace Checboxes
+        $(".pagination a").click(function (ev) {
             replaceCheckboxes();
         });
     });

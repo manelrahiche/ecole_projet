@@ -10,7 +10,7 @@ foreach ($single_study_material_info as $row) {
 
                 <div class="panel-heading">
                     <div class="panel-title">
-                        <h3><?php echo ('Edit Study Material'); ?></h3>
+                        <h3><?php echo ('Modifier le matériel d\'étude'); ?></h3>
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@ foreach ($single_study_material_info as $row) {
                         </div>
                         
                         <div class="form-group">
-                            <label for="field-1" class="col-sm-3 control-label"><?php echo ('Title'); ?></label>
+                            <label for="field-1" class="col-sm-3 control-label"><?php echo ('Titre'); ?></label>
 
                             <div class="col-sm-5">
                                 <input type="text" name="title" class="form-control" id="field-1" value="<?php echo $row['title']; ?>">
@@ -47,11 +47,11 @@ foreach ($single_study_material_info as $row) {
                         </div>
 
                         <div class="form-group">
-                            <label for="field-ta" class="col-sm-3 control-label"><?php echo ('Class'); ?></label>
+                            <label for="field-ta" class="col-sm-3 control-label"><?php echo ('Classe'); ?></label>
 
                             <div class="col-sm-5">
                                 <select name="class_id" class="form-control">
-                                    <option value=""><?php echo ('Select class'); ?></option>
+                                    <option value=""><?php echo ('Selectionner la classe'); ?></option>
                                     <?php foreach ($class_info as $row2) { ?>
                                         <option value="<?php echo $row2['class_id']; ?>" <?php if ($row['class_id'] == $row2['class_id']) echo 'selected'; ?>>
                                             <?php echo $row2['name']; ?>

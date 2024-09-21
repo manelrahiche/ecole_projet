@@ -124,94 +124,12 @@ var baseurl = '<?php echo base_url();?>';
 					<?php echo get_phrase('forgot_your_password');?> ?
 				</A>
 				<br>
-				<a href="<?php echo base_url();?>index.php?login/" data-toggle="modal" data-target="#addParentModal">
+				<a href="<?php echo base_url();?>index.php?login/add_parent" class="link">
                 <i class="entypo-plus"></i>
                <?php echo ('Inscription de parent');?>
 			</div>
 
-			<div class="modal fade" id="addParentModal" tabindex="-1" role="dialog" aria-labelledby="addParentModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable" role="document"> <!-- Classe modal-sm pour réduire la taille -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addParentModalLabel">Inscription Parent</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="parentForm" action="<?php echo base_url();?>index.php?add_parent_enligne.php" method="post">
-                    <!-- Champs nom et prénom côte à côte -->
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="parentName">Nom</label>
-                            <input type="text" class="form-control" id="parentName" name="parentName" placeholder="Nom" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="parentPrenom">Prénom</label>
-                            <input type="text" class="form-control" id="parentPrenom" name="parentPrenom" placeholder="Prénom" required>
-                        </div>
-                    </div>
-                    
-                    <!-- Champs mot de passe et confirmation côte à côte -->
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="parentPassword">Mot de passe</label>
-                            <input type="password" class="form-control" id="parentPassword" name="parentPassword" placeholder="Mot de passe" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="confirmPassword">Confirmer</label>
-                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirmer" required>
-                            <div id="passwordError" style="color: red; display: none;">Mots de passe non identiques.</div>
-                        </div>
-                    </div>
-
-                    <!-- Date de naissance -->
-                    <div class="form-group">
-                        <label for="parentDOB">Date de naissance</label>
-                        <input type="date" class="form-control" id="parentDOB" name="parentDOB" required>
-                    </div>
-
-                    <!-- Mobile et profession côte à côte -->
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="parentMobile">Mobile</label>
-                            <input type="text" class="form-control" id="parentMobile" name="parentMobile" placeholder="Mobile" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="parentProfession">Profession</label>
-                            <input type="text" class="form-control" id="parentProfession" name="parentProfession" placeholder="Profession" required>
-                        </div>
-                    </div>
-
-                    <!-- Adresse -->
-                    <div class="form-group">
-                        <label for="parentAddress">Adresse</label>
-                        <textarea class="form-control" id="parentAddress" name="parentAddress" rows="2" placeholder="Adresse" required></textarea>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Fermer</button>
-                        <button type="submit" class="btn btn-primary btn-sm">Ajouter</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    document.getElementById('parentForm').addEventListener('submit', function(e) {
-        var password = document.getElementById('parentPassword').value;
-        var confirmPassword = document.getElementById('confirmPassword').value;
-
-        if (password !== confirmPassword) {
-            e.preventDefault(); // Empêche l'envoi du formulaire
-            document.getElementById('passwordError').style.display = 'block'; // Affiche le message d'erreur
-        } else {
-            document.getElementById('passwordError').style.display = 'none'; // Cache le message d'erreur
-        }
-    });
-</script>
-
+			
 			
 			
 
