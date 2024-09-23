@@ -95,7 +95,7 @@ class Admin extends CI_Controller
         }
         $page_data['acdSession']    = $this->db->get('acd_session')->result_array();
         $page_data['page_name']  = 'acd_session';
-		$page_data['page_title'] = 'Academic Session';
+		$page_data['page_title'] = 'Session académique';
         $this->load->view('backend/index', $page_data);
     }
 	 /****MANAGE ONLINE ADMISSION*****/

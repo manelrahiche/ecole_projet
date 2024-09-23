@@ -78,8 +78,8 @@ var baseurl = '<?php echo base_url();?>';
 		<div class="login-content">
 			
 			<div class="form-login-error">
-				<h3>Invalid login</h3>
-				<p>Please enter correct email and password!</p>
+				<h3>Connexion invalide</h3>
+				<p>Veuillez entrer une adresse e-mail et un mot de passe corrects !</p>
 			</div>
 			
 			<form method="post" role="form" id="form_login">
@@ -111,7 +111,7 @@ var baseurl = '<?php echo base_url();?>';
 				<div class="form-group">
 					<button type="submit" class="btn btn-success btn-block btn-login">
 						<i class="entypo-login"></i>
-						Login
+						Connecter
 					</button>
 				</div>
 				
@@ -120,12 +120,9 @@ var baseurl = '<?php echo base_url();?>';
 			
 			
 			<div class="login-bottom-links">
-				<A href="<?php echo base_url();?>index.php?login/forgot_password" class="link">
-					<?php echo get_phrase('forgot_your_password');?> ?
-				</A>
-				<br>
+				
 				<a href="<?php echo base_url();?>index.php?login/add_parent" class="link">
-                <i class="entypo-plus"></i>
+                
                <?php echo ('Inscription de parent');?>
 			</div>
 

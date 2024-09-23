@@ -191,14 +191,7 @@
 			"oTableTools": {
 				"aButtons": [
 					
-					{
-						"sExtends": "xls",
-						"mColumns": [0, 2, 3, 4]
-					},
-					{
-						"sExtends": "pdf",
-						"mColumns": [0, 2, 3, 4,]
-					},
+					
 					{
 						"sExtends": "print",
 						"fnSetText"	   : "Press 'esc' to return",

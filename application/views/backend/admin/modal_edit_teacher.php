@@ -6,7 +6,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo ('Nom et prénom');?></label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="validate[required]" name="name" value="<?php echo $row['name'];?>"/>
+                                    <input type="text" class="validate[required]"  name="name" value="<?php echo $row['name'];?>" required/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -18,7 +18,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo ('Genre');?></label>
                                 <div class="col-sm-5">
-                                    <select name="sex" class="uniform" style="width:100%;">
+                                    <select name="sex" class="uniform" style="width:100%;" required>
                                     	<option value="male" <?php if($row['sex'] == 'male')echo 'selected';?>><?php echo ('Male');?></option>
                                     	<option value="female" <?php if($row['sex'] == 'female')echo 'selected';?>><?php echo ('Female');?></option>
                                     </select>
@@ -33,13 +33,13 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo ('Mobile');?></label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="" name="phone" value="<?php echo $row['phone'];?>"/>
+                                    <input type="text" class="" name="phone" value="<?php echo $row['phone'];?>" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo ('Email');?></label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="" name="email" value="<?php echo $row['email'];?>"readonly/>
+                                    <input type="text" class="" name="email" value="<?php echo $row['email'];?>"/>
                                 </div>
                             </div>
                             

@@ -23,8 +23,9 @@
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label"><?php echo ('Email');?></label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" name="email" 
-                            	value="">
+							<input type="text" class="form-control" name="email" data-validate="required" data-message-required="<?php echo ('Valeur requise');?>"  autofocus
+							value="">
+                            	
 						</div>
 					</div>
 					
@@ -32,7 +33,8 @@
 						<label for="field-2" class="col-sm-3 control-label"><?php echo ('Password');?></label>
                         
 						<div class="col-sm-5">
-							<input type="password" class="form-control" name="password" value="">
+							<input type="password" class="form-control" name="password" data-validate="required" data-message-required="<?php echo ('Valeur requise');?>"  autofocus
+							value="">
 						</div>
 					</div>
 					
@@ -40,7 +42,8 @@
 						<label for="field-2" class="col-sm-3 control-label"><?php echo ('Mobile');?></label>
                         
 						<div class="col-sm-5">
-							<input type="text" class="form-control" name="phone" value="">
+							<input type="text" class="form-control" name="phone" data-validate="required" data-message-required="<?php echo ('Valeur requise');?>"  autofocus
+							value="">
 						</div>
 					</div>
 					

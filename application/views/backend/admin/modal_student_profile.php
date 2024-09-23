@@ -61,7 +61,7 @@ foreach($student_info as $row):?>
                 
                     <?php if($row['birthday'] != ''):?>
                     <tr>
-                        <td>Date de namespace</td>
+                        <td>Date de naissance</td>
                         <td><b><?php echo $row['birthday'];?></b></td>
                     </tr>
                     <?php endif;?>

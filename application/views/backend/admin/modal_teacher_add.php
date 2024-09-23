@@ -23,7 +23,7 @@
 						<label for="field-2" class="col-sm-3 control-label"><?php echo ('Date de naissance');?></label>
                         
 						<div class="col-sm-5">
-							<input type="text" class="form-control datepicker" name="birthday" value="" data-start-view="2">
+							<input type="text" class="form-control datepicker" name="birthday" data-validate="required" data-message-required="<?php echo ('Valur requise');?>" value="" data-start-view="2">
 						</div> 
 					</div>
 					
@@ -31,7 +31,7 @@
 						<label for="field-2" class="col-sm-3 control-label"><?php echo ('Genre');?></label>
                         
 						<div class="col-sm-5">
-							<select name="sex" class="form-control">
+							<select name="sex" class="form-control" required>
                               <option value=""><?php echo ('Selectionner');?></option>
                               <option value="Male"><?php echo ('Male');?></option>
                               <option value="Female"><?php echo ('Female');?></option>
@@ -51,14 +51,14 @@
 						<label for="field-2" class="col-sm-3 control-label"><?php echo ('Mobile');?></label>
                         
 						<div class="col-sm-5">
-							<input type="text" class="form-control" name="phone" value="" >
+							<input type="text" class="form-control" name="phone" data-validate="required" data-message-required="<?php echo ('Valur requise');?>" value="" >
 						</div> 
 					</div>
                     
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label"><?php echo ('Email');?></label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" name="email" value="">
+							<input type="text" class="form-control" name="email" data-validate="required" data-message-required="<?php echo ('Valur requise');?>" value="">
 						</div>
 					</div>
 					
@@ -66,7 +66,7 @@
 						<label for="field-2" class="col-sm-3 control-label"><?php echo ('Password');?></label>
                         
 						<div class="col-sm-5">
-							<input type="password" class="form-control" name="password" value="" >
+							<input type="password" class="form-control" name="password" data-validate="required" data-message-required="<?php echo ('Valur requise');?>" value="" >
 						</div> 
 					</div>
 	

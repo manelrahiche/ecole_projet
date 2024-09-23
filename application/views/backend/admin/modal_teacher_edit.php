@@ -19,19 +19,19 @@ foreach ( $edit_data as $row):
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo ('Nom et prénom');?></label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>"/>
+                                    <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>"required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo ('Date de naissance');?></label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="datepicker form-control" name="birthday" value="<?php echo $row['birthday'];?>"/>
+                                    <input type="text" class="datepicker form-control" name="birthday" value="<?php echo $row['birthday'];?>"required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo ('Genre');?></label>
                                 <div class="col-sm-5">
-                                    <select name="sex" class="form-control">
+                                    <select name="sex" class="form-control" required>
                                     	<option value="Male" <?php if($row['sex'] == 'Male')echo 'selected';?>><?php echo ('Male');?></option>
                                     	<option value="Female" <?php if($row['sex'] == 'Female')echo 'selected';?>><?php echo ('Female');?></option>
                                     </select>
@@ -46,21 +46,16 @@ foreach ( $edit_data as $row):
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo ('Mobile');?></label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="phone" value="<?php echo $row['phone'];?>"/>
+                                    <input type="text" class="form-control" name="phone" value="<?php echo $row['phone'];?>" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo ('Email');?></label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="email" value="<?php echo $row['email'];?>" readonly/>
+                                    <input type="text" class="form-control" name="email" value="<?php echo $row['email'];?>" required/>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label"><?php echo ('Password');?></label>
-                                <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="password" value="<?php echo $row['password'];?>"/>
-                                </div>
-                            </div>
+                            
                             
                             
                         <div class="form-group">

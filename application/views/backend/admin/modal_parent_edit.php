@@ -28,8 +28,8 @@
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label"><?php echo ('Email');?></label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" name="email" 
-                            	value="<?php echo $row['email'];?>">
+							<input type="text" class="form-control" name="email" data-validate="required" data-message-required="<?php echo ('Valeur requise');?>"
+                            	value="<?php echo $row['email'];?>" >
 						</div>
 					</div>
 					
@@ -37,7 +37,7 @@
 						<label for="field-2" class="col-sm-3 control-label"><?php echo ('Mobile');?></label>
                         
 						<div class="col-sm-5">
-							<input type="text" class="form-control" name="phone" value="<?php echo $row['phone'];?>">
+							<input type="text" class="form-control" name="phone" data-validate="required" data-message-required="<?php echo ('Valeur requise');?>"  value="<?php echo $row['phone'];?>">
 						</div>
 					</div>
 					

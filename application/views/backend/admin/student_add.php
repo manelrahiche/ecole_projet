@@ -15,7 +15,7 @@
 						<label for="field-1" class="col-sm-3 control-label"><?php echo ('Nom et prénom');?></label>
                         
 						<div class="col-sm-5">
-							<input type="text" class="form-control" name="name" data-validate="required" data-message-required="<?php echo ('Valur raquise');?>" value="" autofocus>
+							<input type="text" class="form-control" name="name" required  value="" autofocus>
 						</div>
 					</div>
 
@@ -24,7 +24,7 @@
                         
 						<div class="col-sm-5">
 							<select name="parent_id" class="form-control">
-                              <option value=""><?php echo ('Selectionner');?></option>
+                              <option value=""><?php echo ('Selectionner le parent');?></option>
                               <?php 
 								$parents = $this->db->get('parent')->result_array();
 								foreach($parents as $row):
@@ -43,10 +43,10 @@
 						<label for="field-2" class="col-sm-3 control-label"><?php echo ('Classe');?></label>
                         
 						<div class="col-sm-5">
-							<select name="class_id" class="form-control" data-validate="required" id="class_id" 
-								data-message-required="<?php echo ('Valur raquise');?>"
+							<select name="class_id" class="form-control" required id="class_id" 
+								
 									onchange="return get_class_sections(this.value)">
-                              <option value=""><?php echo ('Selectionner');?></option>
+                              <option value=""><?php echo ('Selectionner la classe');?></option>
                               <?php 
 								$classes = $this->db->get('class')->result_array();
 								foreach($classes as $row):
@@ -65,7 +65,7 @@
 						<label for="field-2" class="col-sm-3 control-label"><?php echo ('Section');?></label>
 		                    <div class="col-sm-5">
 		                        <select name="section_id" class="form-control" id="section_selector_holder">
-		                            <option value=""><?php echo ('Sélectionnez d\'abord la classe');?></option>
+		                            <option value=""><?php echo ('Sélectionnez la section');?></option>
 			                        
 			                    </select>
 			                </div>
@@ -83,7 +83,7 @@
 						<label for="field-2" class="col-sm-3 control-label"><?php echo ('Date de naissance');?></label>
                         
 						<div class="col-sm-5">
-							<input type="text" class="form-control datepicker" name="birthday" value="" data-start-view="2">
+							<input type="text" class="form-control datepicker" name="birthday" value="" data-start-view="2" required>
 						</div> 
 					</div>
 					
@@ -91,8 +91,8 @@
 						<label for="field-2" class="col-sm-3 control-label"><?php echo ('Genre');?></label>
                         
 						<div class="col-sm-5">
-							<select name="sex" class="form-control">
-                              <option value=""><?php echo ('Selectionner');?></option>
+							<select name="sex" class="form-control" required>
+                              <option value=""><?php echo ('Selectionner le genre');?></option>
                               <option value="Male"><?php echo ('Male');?></option>
                               <option value="Female"><?php echo ('Female');?></option>
                           </select>
@@ -118,7 +118,7 @@
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label"><?php echo ('Email');?></label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" name="email" value="">
+							<input type="text" class="form-control" name="email" value="" required>
 						</div>
 					</div>
 					
@@ -126,7 +126,7 @@
 						<label for="field-2" class="col-sm-3 control-label"><?php echo ('Password');?></label>
                         
 						<div class="col-sm-5">
-							<input type="password" class="form-control" name="password" value="" >
+							<input type="password" class="form-control" name="password" value=""  required>
 						</div> 
 					</div>
 	

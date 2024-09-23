@@ -77,13 +77,13 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('Nom du classe');?></label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="name" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>"/>
+                                    <input type="text" class="form-control" name="name" data-validate="required" data-message-required="<?php echo get_phrase('valeur requise');?>"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('Numero du classe');?></label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="name_numeric"/>
+                                    <input type="text" class="form-control" name="name_numeric" name="name" data-validate="required" data-message-required="<?php echo get_phrase('valeur requise');?>"/>
                                 </div>
                             </div>
                             <div class="form-group">

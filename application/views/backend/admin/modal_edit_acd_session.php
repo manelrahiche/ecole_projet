@@ -17,26 +17,26 @@ foreach ( $edit_data as $row):
                     <div class="form-group">
                         <label class="col-sm-3 control-label"><?php echo ('Nom de session');?></label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>"/>
+                            <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>" required/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label"><?php echo ('À partir de la date');?></label>
                         <div class="col-sm-5">
-                            <input type="text" class="datepicker form-control" name="strt_dt" value="<?php echo $row['strt_dt'];?>"/>
+                            <input type="text" class="datepicker form-control" name="strt_dt" value="<?php echo $row['strt_dt'];?>" required/>
                         </div>
                     </div>
                     
                         <div class="form-group">
                         <label class="col-sm-3 control-label"><?php echo ('À ce jour');?></label>
                         <div class="col-sm-5">
-                            <input type="text" class="datepicker form-control" name="end_dt" value="<?php echo $row['end_dt'];?>"/>
+                            <input type="text" class="datepicker form-control" name="end_dt" value="<?php echo $row['end_dt'];?>" required/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label"><?php echo ('Est ouvert');?></label>
                         <div class="col-sm-5">
-                            <select name="is_open" class="form-control">
+                            <select name="is_open" class="form-control" required>
 							
                                         <option <?php echo ($row['is_open']=='0')?'selected':'';?> value="0">Non</option>
 										 <option <?php echo ($row['is_open']=='1')?'selected':'';?> value="1">Oui</option>

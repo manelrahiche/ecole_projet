@@ -2,7 +2,7 @@
             <a href="javascript:;" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_parent_add/');" 
                 class="btn btn-primary pull-right">
                 <i class="entypo-plus-circled"></i>
-                <?php echo ('Parent');?>
+                <?php echo ('Ajouter un parent');?>
                 </a> 
                 <br><br>
                <table class="table table-bordered table-hover table-striped datatable" id="table_export">
@@ -75,14 +75,7 @@
             "oTableTools": {
                 "aButtons": [
                     
-                    {
-                        "sExtends": "xls",
-                        "mColumns": [1,2,3,4,5]
-                    },
-                    {
-                        "sExtends": "pdf",
-                        "mColumns": [1,2,3,4,5]
-                    },
+                   
                     {
                         "sExtends": "print",
                         "fnSetText"    : "Press 'esc' to return",

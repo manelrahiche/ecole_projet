@@ -278,13 +278,6 @@
             </a>
         </li>
 
-        <!-- TRANSPORT -->
-        <li class="<?php if ($page_name == 'transport') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/transport">
-                <i class="entypo-location"></i>
-                <span><?php echo get_phrase('Transport'); ?></span>
-            </a>
-        </li>
 
 
         <!-- NOTICEBOARD -->
